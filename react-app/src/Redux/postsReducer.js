@@ -1,6 +1,6 @@
 const initialState = {
-  posts: [],
+  posts: [1, 2],
   fetchedPosts: [],
 };
 
-export const postsReducer = (state = initialState, action) => null;
+export const postsReducer = (state = initialState, action) => state;
