@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components
-import FetchedPosts from './Components/FetchedPosts';
+import { FetchedPosts } from './Components/FetchedPosts';
 import Posts from './Components/Posts';
 import PostForm from './Components/PostForm';
 
@@ -20,7 +20,7 @@ function App() {
         </div>
         <div className="col">
           <h2>Unsynchronized posts</h2>
-          <FetchedPosts posts={[]} />
+          <FetchedPosts />
         </div>
       </div>
     </div>
