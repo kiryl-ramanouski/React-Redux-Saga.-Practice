@@ -6,7 +6,7 @@ const Posts = ({ syncPosts }) => {
   if (!syncPosts.length) {
     return <p>We don't have any posts yet...</p>;
   }
-  return syncPosts.map((post, i) => <Post key={i} post={post} />);
+  return syncPosts.map((post, i) => <Post key={post.id} title={post.title} />);
 };
 
 const mapStateToProps = (state) => {
