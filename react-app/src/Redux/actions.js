@@ -13,16 +13,10 @@ export const fetchPosts = () => {
     const response = await fetch(
       'https://jsonplaceholder.typicode.com/posts?_limit=5'
     );
-    const json = await response.json();
-    return dispatch({ type: FETCH_POSTS, payload: json });
+    const posts = await response.json();
+    return dispatch({
+      type: FETCH_POSTS,
+      payload: posts,
+    });
   };
-
-  // Is it also correct way to get posts or not?
-  // const response = async () =>
-  //   await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
-  // const posts = response.json();
-  // return {
-  //   type: FETCH_POSTS,
-  //   payload: posts,
-  // };
 };
