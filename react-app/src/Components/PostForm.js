@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createPost } from '../Redux/actions';
+import { createPost, showAlert, hideAlert } from '../Redux/actions';
+import { Alert } from './Alert';
 
 class PostForm extends React.Component {
   constructor(props) {
@@ -14,14 +15,18 @@ class PostForm extends React.Component {
     event.preventDefault();
 
     const { title } = this.state;
+
     if (!title.trim()) {
-      return;
+      return this.props.showAlert('Title cannot be empty!');
     }
+
     const newPost = {
       title,
       id: Date.now().toString(),
     };
+
     this.props.createPost(newPost);
+
     this.setState({ title: '' });
   };
 
@@ -45,6 +50,7 @@ class PostForm extends React.Component {
             value={this.state.title}
             onChange={this.changeInputHandler}
           />
+          {this.props.alert && <Alert text={this.props.alert} />}
         </div>
         <button type="submit" className="btn btn-success">
           Create
@@ -54,6 +60,11 @@ class PostForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = { createPost };
+const mapStateToProps = (state) => {
+  return {
+    alert: state.app.alert,
+  };
+};
+const mapDispatchToProps = { createPost, showAlert, hideAlert };
 
-export default connect(null, mapDispatchToProps)(PostForm);
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm);
