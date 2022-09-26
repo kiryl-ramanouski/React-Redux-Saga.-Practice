@@ -2,6 +2,8 @@ import { CREATE_POST } from './types';
 import { FETCH_POSTS } from './types';
 import { SHOW_LOADER } from './types';
 import { HIDE_LOADER } from './types';
+import { SHOW_ALERT } from './types';
+import { HIDE_ALERT } from './types';
 
 export const createPost = (post) => {
   return {
@@ -19,6 +21,19 @@ export const showLoader = () => {
 export const hideLoader = () => {
   return {
     type: HIDE_LOADER,
+  };
+};
+
+export const showAlert = (text) => {
+  return {
+    type: SHOW_ALERT,
+    payload: text,
+  };
+};
+
+export const hideAlert = () => {
+  return {
+    type: HIDE_ALERT,
   };
 };
 
