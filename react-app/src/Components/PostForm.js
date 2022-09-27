@@ -40,6 +40,7 @@ class PostForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.submitHandler}>
+        {this.props.alert && <Alert text={this.props.alert} />}
         <div className="form-group">
           <label htmlFor="title">Post Title</label>
           <input
@@ -50,7 +51,6 @@ class PostForm extends React.Component {
             value={this.state.title}
             onChange={this.changeInputHandler}
           />
-          {this.props.alert && <Alert text={this.props.alert} />}
         </div>
         <button type="submit" className="btn btn-success">
           Create
