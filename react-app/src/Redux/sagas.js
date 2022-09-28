@@ -5,7 +5,6 @@ import { REQUEST_POSTS } from './types';
 export function* sagaWatcher() {
   yield takeEvery(REQUEST_POSTS, sagaWorker);
 }
-
 function* sagaWorker() {
   yield put(showLoader());
 }
