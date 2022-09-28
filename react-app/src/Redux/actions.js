@@ -1,5 +1,6 @@
 import { CREATE_POST } from './types';
 import { FETCH_POSTS } from './types';
+import { REQUEST_POSTS } from './types';
 import { SHOW_LOADER } from './types';
 import { HIDE_LOADER } from './types';
 import { SHOW_ALERT } from './types';
@@ -44,18 +45,21 @@ export const showAlert = (text) => {
 };
 
 export const fetchPosts = () => {
-  return async (dispatch) => {
-    try {
-      dispatch(showLoader());
-      const response = await fetch(
-        'https://jsonplaceholder.typicode.com/posts?_limit=5'
-      );
-      const posts = await response.json();
-      dispatch({ type: FETCH_POSTS, payload: posts });
-      dispatch(hideLoader());
-    } catch (error) {
-      dispatch(hideLoader());
-      dispatch(showAlert('Something went wrong'));
-    }
+  return {
+    type: REQUEST_POSTS,
   };
+  // return async (dispatch) => {
+  //   try {
+  //     dispatch(showLoader());
+  //     const response = await fetch(
+  //       'https://jsonplaceholder.typicode.com/posts?_limit=5'
+  //     );
+  //     const posts = await response.json();
+  //     dispatch({ type: FETCH_POSTS, payload: posts });
+  //     dispatch(hideLoader());
+  //   } catch (error) {
+  //     dispatch(hideLoader());
+  //     dispatch(showAlert('Something went wrong'));
+  //   }
+  // };
 };
