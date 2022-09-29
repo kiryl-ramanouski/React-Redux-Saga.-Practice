@@ -1,5 +1,4 @@
 import { CREATE_POST } from './types';
-import { FETCH_POSTS } from './types';
 import { REQUEST_POSTS } from './types';
 import { SHOW_LOADER } from './types';
 import { HIDE_LOADER } from './types';
